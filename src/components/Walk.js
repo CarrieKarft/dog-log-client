@@ -2,7 +2,9 @@ import EditWalk from "./EditWalk";
 
 function Walk() {
     return(
-        <div></div>
+        <div>
+            {/* maybe render EditWalk in Walk? */}
+        </div>
     )
 }
 

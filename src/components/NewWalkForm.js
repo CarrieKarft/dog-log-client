@@ -1,22 +1,22 @@
 
 
-function NewWalkForm() {
+function NewWalkForm({name}) {
     return(
         <div>
-            <h2>Time For A Walk!</h2>
+            <h2>Time To Walk {name}!</h2>
             <form>
                 {/* maybe have this taken care of automatically in post requst? */}
-            <label>Who did you walk?&nbsp;
+            {/* <label>Who did you walk?&nbsp;
                     <select>
                         <option></option>
                         <option></option>
                         <option></option>
                     </select>
-                </label>
+                </label> */}
                 <label>Where did you walk?&nbsp;
                     <input type="text"></input>
                 </label>
-                <label>Did NAME do their buisness?&nbsp;
+                <label>Did {name} do their buisness?&nbsp;
                     <select>
                         <option>YES</option>
                         <option>NO</option>
@@ -28,7 +28,7 @@ function NewWalkForm() {
                 <label>How many miles did you walk?&nbsp;
                     <input type="text"></input>
                 </label>
-                <label>Did NAME recieve any medication?&nbsp;
+                <label>Did {name} recieve any medication?&nbsp;
                     <select>
                         <option>N/A</option>
                         <option>YES</option>

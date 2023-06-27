@@ -33,9 +33,9 @@ function DogWalks() {
                 <h2>{name}'s Walks</h2>
                 <div>{mappingWalks}</div>
             </div>
-            <NewWalkForm />
+            <NewWalkForm name={name} />
             {/* hide element unless icon in Walk component clicked */}
-            <EditWalk />
+            <EditWalk name={name}/>
         </div>
     )
 }

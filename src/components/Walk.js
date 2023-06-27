@@ -1,15 +1,20 @@
 import EditWalk from "./EditWalk";
 
 function Walk({walk}) {
+    const {location, used_bathroom, duration_in_minutes, distance_in_miles, medication_given, notes} = walk
     return(
         <div>
             {/* maybe render EditWalk in Walk? */}
-            <p>Location: {walk.location}</p>
-            <p>Bathroom: {!!walk.used_bathroom ? "Yes" : "No"}</p>
-            <p>Duration in minutes: {walk.duration_in_minutes}</p>
-            <p>Distance in miles: {walk.distance_in_miles}</p>
-            <p>Medication: {!!walk.medication_given ? "Yes" : "No"}</p>
-            <p>Notes: {walk.notes}</p>
+            <p>Location: {location}</p>
+            <p>Bathroom: {!!used_bathroom ? "Yes" : "No"}</p>
+            <p>Duration in minutes: {duration_in_minutes}</p>
+            <p>Distance in miles: {distance_in_miles}</p>
+            <p>Medication: {!!medication_given ? "Yes" : "No"}</p>
+            <p>Notes: {notes}</p>
+            <div className="walkButtons">
+                <button>Edit Walk</button>
+                <button>Delte Walk</button>
+            </div>
 
         </div>
     )

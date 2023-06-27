@@ -1,11 +1,11 @@
 
 
-function EditWalk() {
+function EditWalk({name}) {
     return(
         // this will automatically populate with values entered for walk that is being edited
         <div>
                <div>
-            <h2>Edit NAME'S walk</h2>
+            <h2>Edit {name}'s' walk</h2>
             <form>
                 {/* maybe have this taken care of automatically in post requst? */}
             <label>Who did you walk?&nbsp;

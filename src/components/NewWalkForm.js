@@ -1,10 +1,31 @@
+import {useState} from 'react'
 
+function NewWalkForm({name, id}) {
+    const [walkLocation, setWalkLocation] = useState("")
+    const [walkLengthMinutes, setWalkLengtMinutes] = useState("")
+    const [walkBathroom, setWalkBathroom] = useState("")
+    const [walkMiles, setWalkMiles] = useState("")
+    const [walkMedication, setWalkMedication] = useState("")
+    const [walkNotes, setWalkNotes] = useState("")
 
-function NewWalkForm({name}) {
+    function handleWalkSubmit(e) {
+        e.preventDefault()
+        const newWalkObj = {
+            location: walkLocation,
+            used_bathroom: parseInt(walkBathroom, 10),
+            duration_in_minutes: parseInt(walkLengthMinutes, 10),
+            distance_in_miles: parseFloat(walkMiles),
+            medication_given: parseInt(walkMedication, 10),
+            notes: walkNotes,
+            dog_id: id
+        }
+        console.log(newWalkObj)
+    }
+
     return(
         <div>
             <h2>Time To Walk {name}!</h2>
-            <form>
+            <form onSubmit={e => handleWalkSubmit(e)}>
                 {/* maybe have this taken care of automatically in post requst? */}
             {/* <label>Who did you walk?&nbsp;
                     <select>
@@ -14,29 +35,44 @@ function NewWalkForm({name}) {
                     </select>
                 </label> */}
                 <label>Where did you walk?&nbsp;
-                    <input type="text"></input>
+                    <input 
+                    type="text"
+                    value={walkLocation}
+                    onChange={e => setWalkLocation(e.target.value)}
+                    ></input>
                 </label>
                 <label>Did {name} do their buisness?&nbsp;
-                    <select>
-                        <option>YES</option>
-                        <option>NO</option>
+                    <select type="select" value={walkBathroom} onChange={e => setWalkBathroom(e.target.value)}>
+                        <option value="1">YES</option>
+                        <option value="0">NO</option>
                     </select>
                 </label>
                 <label>How long was your walk in minutes?&nbsp;
-                    <input type="text"></input>
+                    <input 
+                    type="text"
+                    value={walkLengthMinutes}
+                    onChange={e => setWalkLengtMinutes(e.target.value)}
+                    ></input>
                 </label>
                 <label>How many miles did you walk?&nbsp;
-                    <input type="text"></input>
+                    <input 
+                    type="text"
+                    value={walkMiles}
+                    onChange={e => setWalkMiles(e.target.value)}
+                    ></input>
                 </label>
                 <label>Did {name} recieve any medication?&nbsp;
-                    <select>
-                        <option>N/A</option>
-                        <option>YES</option>
-                        <option>NO</option>
+                    <select type="select" value={walkMedication} onChange={e => setWalkMedication(e.target.value)}>
+                        <option value="1">YES</option>
+                        <option value="0">NO</option>
                     </select>
                 </label>
                 <label>Any additional notes?&nbsp;
-                    <textarea type="text"></textarea>
+                    <textarea 
+                    type="text"
+                    value={walkNotes}
+                    onChange={e => setWalkNotes(e.target.value)}
+                    ></textarea>
                 </label>
                 <input type="submit"></input>
     

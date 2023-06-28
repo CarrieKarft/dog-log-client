@@ -2,7 +2,7 @@ import SearchDogs from "./SearchDogs";
 import Dog from "./Dog";
 import NewDogForm from "./NewDogForm";
 import {useEffect, useState} from 'react'
-// import { useEffect } from "react";
+
 
 function DogsList() {
     const [dogs, setDogs] = useState([])
@@ -19,7 +19,7 @@ function DogsList() {
         <div>
             <SearchDogs />
             <div>{mappingDogs}</div>
-            <NewDogForm />
+            <NewDogForm dogs={dogs} setDogs={setDogs}/>
         </div>
     )
 }

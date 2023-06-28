@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function NewDogForm() {
+function NewDogForm({dogs, setDogs}) {
     const [dogName, setDogName] = useState("")
     const [dogAge, setDogAge] = useState("")
     const [dogBreed, setDogBreed] = useState("")
@@ -17,6 +17,15 @@ function NewDogForm() {
             medication: dogMedication
         }
         console.log(newDogObj)
+        fetch("http://localhost:9292/dogs", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newDogObj),
+          })
+          .then(r => r.json())
+          .then(newDog => setDogs([...dogs, newDog]))
     }
 
     return(

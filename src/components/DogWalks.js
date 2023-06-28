@@ -8,18 +8,23 @@ import {useState, useEffect} from 'react'
 
 function DogWalks() {
     const [dogWalks, setDogWalks] = useState(null)
-    const id = 2
+    const [walks, setWalks] = useState([])
+    const id = 3
 
     useEffect(() => {
         fetch(`http://localhost:9292/dogs/${id}/walks`)
         .then(r => r.json())
-        .then(dogWalkData => setDogWalks(dogWalkData))
+        .then(dogWalkData => {
+            setDogWalks(dogWalkData)
+            setWalks(dogWalkData.walks)
+        })
    
     }, [id])
 
     if (!dogWalks) return <h2>Loading...</h2>
+    if (!walks) return <h2>Loading...</h2>
 
-    const {name, breed, age, walks} = dogWalks
+    const {name, breed, age} = dogWalks
    
     
     const mappingWalks = walks.map(walk => {
@@ -33,9 +38,9 @@ function DogWalks() {
                 <h2>{name}'s Walks</h2>
                 <div>{mappingWalks}</div>
             </div>
-            <NewWalkForm name={name} />
+            <NewWalkForm name={name} id={dogWalks.id} walks={walks} setWalks={setWalks}/>
             {/* hide element unless icon in Walk component clicked */}
-            <EditWalk name={name}/>
+            <EditWalk name={name} id={dogWalks.id}/>
         </div>
     )
 }

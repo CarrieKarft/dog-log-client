@@ -1,6 +1,6 @@
 import {useState} from 'react'
 
-function NewWalkForm({name, id}) {
+function NewWalkForm({name, id , walks, setWalks}) {
     const [walkLocation, setWalkLocation] = useState("")
     const [walkLengthMinutes, setWalkLengtMinutes] = useState("")
     const [walkBathroom, setWalkBathroom] = useState("")
@@ -20,6 +20,16 @@ function NewWalkForm({name, id}) {
             dog_id: id
         }
         console.log(newWalkObj)
+        fetch("http://localhost:9292/walks", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newWalkObj),
+          })
+          .then(r => r.json())
+          .then(newWalk => setWalks([...walks, newWalk]))
+          console.log(walks)
     }
 
     return(

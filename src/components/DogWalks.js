@@ -46,7 +46,7 @@ function DogWalks() {
    
     
     const mappingWalks = walks.map(walk => {
-        return <Walk key={walk.id} walk={walk} id={walk.id} handleDeleteClick={handleDeleteClick}/>
+        return <Walk key={walk.id} walk={walk} id={walk.id} name={name} handleDeleteClick={handleDeleteClick}/>
     })
 
     return(
@@ -58,7 +58,7 @@ function DogWalks() {
             </div>
             <NewWalkForm name={name} id={dogWalks.id} walks={walks} setWalks={setWalks}/>
             {/* hide element unless icon in Walk component clicked */}
-            <EditWalk name={name} id={dogWalks.id}/>
+            {/* <EditWalk name={name} id={dogWalks.id}/> */}
         </div>
     )
 }

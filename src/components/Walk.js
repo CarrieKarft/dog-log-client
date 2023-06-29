@@ -1,7 +1,10 @@
 import EditWalk from "./EditWalk";
 
-function Walk({walk}) {
+function Walk({walk, id, handleDeleteClick}) {
     const {location, used_bathroom, duration_in_minutes, distance_in_miles, medication_given, notes} = walk
+
+
+
     return(
         <div>
             {/* maybe render EditWalk in Walk? */}
@@ -13,7 +16,7 @@ function Walk({walk}) {
             <p>Notes: {notes}</p>
             <div className="walkButtons">
                 <button>Edit Walk</button>
-                <button>Delte Walk</button>
+                <button onClick={() => handleDeleteClick(id)}>Delete Walk</button>
             </div>
 
         </div>

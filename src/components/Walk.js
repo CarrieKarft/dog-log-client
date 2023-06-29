@@ -1,9 +1,15 @@
 import EditWalk from "./EditWalk";
+import {useState} from 'react';
 
-function Walk({walk, id, handleDeleteClick}) {
+function Walk({walk, id, handleDeleteClick, name}) {
+    const [clicked, setClicked] = useState(false)
     const {location, used_bathroom, duration_in_minutes, distance_in_miles, medication_given, notes} = walk
 
-
+    function hadleEditClick() {
+        setClicked(true)
+        console.log(clicked)
+    }
+    console.log(clicked)
 
     return(
         <div>
@@ -15,10 +21,12 @@ function Walk({walk, id, handleDeleteClick}) {
             <p>Medication: {!!medication_given ? "Yes" : "No"}</p>
             <p>Notes: {notes}</p>
             <div className="walkButtons">
-                <button>Edit Walk</button>
+                <button onClick={() => hadleEditClick()}>Edit Walk</button>
                 <button onClick={() => handleDeleteClick(id)}>Delete Walk</button>
             </div>
-
+            <div  style={{display: clicked ? null : "none"}}>
+            <EditWalk name={name} id={id} walk={walk} setClicked={setClicked}/>
+            </div>
         </div>
     )
 }

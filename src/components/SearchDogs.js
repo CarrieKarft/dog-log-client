@@ -1,13 +1,19 @@
+// import {useState} from 'react'
+
+function SearchDogs({searchDog, setSearchDog}) {
+    // const [searchName, setSearchName] = useState("")
 
 
-function SearchDogs() {
     return(
-        <div>
+        <form>
             <label>Seach for dogs by name&nbsp;    
-                <input type='text'></input>
+                <input 
+                type='text'
+                value={searchDog} 
+                onChange={e => setSearchDog(e.target.value)}
+                ></input>
             </label>
-            <button type="submit">Search</button>
-        </div>
+        </form>
     )
 }
 

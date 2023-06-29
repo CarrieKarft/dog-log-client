@@ -9,7 +9,7 @@ import {useState, useEffect} from 'react'
 function DogWalks() {
     const [dogWalks, setDogWalks] = useState(null)
     const [walks, setWalks] = useState([])
-    const id = 3
+    const id = 2
 
     useEffect(() => {
         fetch(`http://localhost:9292/dogs/${id}/walks`)
@@ -21,6 +21,24 @@ function DogWalks() {
    
     }, [id])
 
+    function handleDeleteClick(id) {
+        fetch(`http://localhost:9292/walks/${id}`, {
+            method: "DELETE"
+        })
+        .then(r => r.json())
+        .then(deletedWalk => filteringDeletedWalk(deletedWalk))
+    }
+
+    function filteringDeletedWalk(deletedWalk) {
+        const updatingWalks = walks.filter(walk => {
+            if (walk.id !== deletedWalk.id) {
+                return walk
+            }
+        })
+        setWalks(() => updatingWalks)
+        console.log(updatingWalks)
+    }
+
     if (!dogWalks) return <h2>Loading...</h2>
     if (!walks) return <h2>Loading...</h2>
 
@@ -28,7 +46,7 @@ function DogWalks() {
    
     
     const mappingWalks = walks.map(walk => {
-        return <Walk key={walk.id} walk={walk} />
+        return <Walk key={walk.id} walk={walk} id={walk.id} handleDeleteClick={handleDeleteClick}/>
     })
 
     return(

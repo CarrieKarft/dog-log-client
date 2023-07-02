@@ -1,14 +1,16 @@
 import {useState} from 'react'
 
-function NewWalkForm({name, id , walks, setWalks}) {
+function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
+    // const {location, used_bathroom, distance_in_miles, duration_in_minutes, medication_given, notes} = newWalkFormInfo
     const [walkLocation, setWalkLocation] = useState("")
     const [walkLengthMinutes, setWalkLengtMinutes] = useState("")
-    const [walkBathroom, setWalkBathroom] = useState("")
+    const [walkBathroom, setWalkBathroom] = useState("1")
     const [walkMiles, setWalkMiles] = useState("")
-    const [walkMedication, setWalkMedication] = useState("")
+    const [walkMedication, setWalkMedication] = useState("1")
     const [walkNotes, setWalkNotes] = useState("")
 
-    function handleWalkSubmit(e) {
+
+    function onHandleWalkSubmit(e) {
         e.preventDefault()
         const newWalkObj = {
             location: walkLocation,
@@ -17,7 +19,7 @@ function NewWalkForm({name, id , walks, setWalks}) {
             distance_in_miles: parseFloat(walkMiles),
             medication_given: parseInt(walkMedication, 10),
             notes: walkNotes,
-            dog_id: id
+            dog_id: dog_id
         }
         console.log(newWalkObj)
         fetch("http://localhost:9292/walks", {
@@ -28,32 +30,30 @@ function NewWalkForm({name, id , walks, setWalks}) {
             body: JSON.stringify(newWalkObj),
           })
           .then(r => r.json())
-          .then(newWalk => setWalks([...walks, newWalk]))
-          console.log(walks)
+          .then(onUpdatingStateWithNewWalk)
+          setWalkLengtMinutes("")
+          setWalkLocation("")
+          setWalkBathroom("1")
+          setWalkMedication("1")
+          setWalkMiles("")
+          setWalkNotes("")
     }
 
     return(
         <div>
             <h2>Time To Walk {name}!</h2>
-            <form onSubmit={e => handleWalkSubmit(e)}>
-                {/* maybe have this taken care of automatically in post requst? */}
-            {/* <label>Who did you walk?&nbsp;
-                    <select>
-                        <option></option>
-                        <option></option>
-                        <option></option>
-                    </select>
-                </label> */}
+            <form onSubmit={e => onHandleWalkSubmit(e)}>
                 <label>Where did you walk?&nbsp;
                     <input 
                     type="text"
                     value={walkLocation}
                     onChange={e => setWalkLocation(e.target.value)}
+        
                     ></input>
                 </label>
                 <label>Did {name} do their buisness?&nbsp;
                     <select type="select" value={walkBathroom} onChange={e => setWalkBathroom(e.target.value)}>
-                        <option value="1">YES</option>
+                        <option defaultValue="1">YES</option>
                         <option value="0">NO</option>
                     </select>
                 </label>
@@ -73,7 +73,7 @@ function NewWalkForm({name, id , walks, setWalks}) {
                 </label>
                 <label>Did {name} recieve any medication?&nbsp;
                     <select type="select" value={walkMedication} onChange={e => setWalkMedication(e.target.value)}>
-                        <option value="1">YES</option>
+                        <option defaultValue="1" >YES</option>
                         <option value="0">NO</option>
                     </select>
                 </label>

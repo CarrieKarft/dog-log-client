@@ -4,16 +4,16 @@ import NewDogForm from "./NewDogForm";
 import {useEffect, useState} from 'react'
 
 
-function DogsList() {
-    const [dogs, setDogs] = useState([])
+function DogsList({dogs, setDogs}) {
+    // const [dogs, setDogs] = useState([])
     const [searchDog, setSearchDog] = useState("")
     // console.log(searchDog)
 
-    useEffect(() => {
-        fetch("http://localhost:9292/dogs")
-        .then(r => r.json())
-        .then(dogsData => setDogs(dogsData))
-    }, [])
+    // useEffect(() => {
+    //     fetch("http://localhost:9292/dogs")
+    //     .then(r => r.json())
+    //     .then(dogsData => setDogs(dogsData))
+    // }, [])
 
     // function onHandleSearchSubmit(e) {
     //     e.preventDefault()
@@ -29,7 +29,7 @@ function DogsList() {
 
 
     const mappingDogs = searchDogFilter.map(d => {
-        return <Dog dog={d} key={d.id}/>
+        return <Dog dog={d} key={d.id} id={d.id}/>
     })
     return(
         <div>

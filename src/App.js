@@ -16,6 +16,8 @@ function App() {
   }, [])
   console.log(dogs)
 
+  // if (!dogs) return <h2>Loading...</h2>
+
   return (
     <div className="App">
      <TitleBanner />
@@ -24,7 +26,7 @@ function App() {
         <DogsList dogs={dogs} setDogs={setDogs}/>
       </Route>
       <Route path='/dogs/:dog_id/walks'>
-        <DogWalks dogs={dogs}/>
+        <DogWalks dogs={dogs} setDogs={setDogs}/>
       </Route>
      </Switch>
     </div>

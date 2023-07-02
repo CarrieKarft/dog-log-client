@@ -1,5 +1,7 @@
+import {Link} from 'react-router-dom';
 
-function Dog({dog}) {
+
+function Dog({dog, id}) {
 //   console.log(dog.medication)
 
     return(
@@ -9,6 +11,9 @@ function Dog({dog}) {
             <p>Age: {dog.age}</p>
             <p>Energy Level: {dog.energy_level}</p>
             <p>Needs Medication: {dog.medication}</p>
+            <div className='linkDiv'>
+                <Link to={`/dogs/${id}/walks`}>Click to view {dog.name}'s walks</Link>
+            </div>
         </div>
     )
 }

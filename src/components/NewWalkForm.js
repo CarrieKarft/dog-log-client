@@ -1,7 +1,6 @@
 import {useState} from 'react'
 
 function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
-    // const {location, used_bathroom, distance_in_miles, duration_in_minutes, medication_given, notes} = newWalkFormInfo
     const [walkLocation, setWalkLocation] = useState("")
     const [walkLengthMinutes, setWalkLengtMinutes] = useState("")
     const [walkBathroom, setWalkBathroom] = useState("1")
@@ -39,51 +38,52 @@ function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
           setWalkNotes("")
     }
 
+
     return(
         <div>
             <h2>Time To Walk {name}!</h2>
             <form onSubmit={e => onHandleWalkSubmit(e)}>
-                <label>Where did you walk?&nbsp;
+                <label >Where did you walk?&nbsp;
                     <input 
                     type="text"
                     value={walkLocation}
                     onChange={e => setWalkLocation(e.target.value)}
         
                     ></input>
-                </label>
+                </label><br></br>
                 <label>Did {name} do their buisness?&nbsp;
                     <select type="select" value={walkBathroom} onChange={e => setWalkBathroom(e.target.value)}>
                         <option defaultValue="1">YES</option>
                         <option value="0">NO</option>
                     </select>
-                </label>
+                </label><br></br>
                 <label>How long was your walk in minutes?&nbsp;
                     <input 
                     type="text"
                     value={walkLengthMinutes}
                     onChange={e => setWalkLengtMinutes(e.target.value)}
                     ></input>
-                </label>
+                </label><br></br>
                 <label>How many miles did you walk?&nbsp;
                     <input 
                     type="text"
                     value={walkMiles}
                     onChange={e => setWalkMiles(e.target.value)}
                     ></input>
-                </label>
+                </label><br></br>
                 <label>Did {name} recieve any medication?&nbsp;
                     <select type="select" value={walkMedication} onChange={e => setWalkMedication(e.target.value)}>
                         <option defaultValue="1" >YES</option>
                         <option value="0">NO</option>
                     </select>
-                </label>
+                </label><br></br>
                 <label>Any additional notes?&nbsp;
                     <textarea 
                     type="text"
                     value={walkNotes}
                     onChange={e => setWalkNotes(e.target.value)}
                     ></textarea>
-                </label>
+                </label><br></br>
                 <input type="submit"></input>
     
             </form>

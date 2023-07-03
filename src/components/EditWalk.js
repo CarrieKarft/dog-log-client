@@ -40,8 +40,7 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
     // }
 
     return(
-        <div>
-               <div>
+        <div style={{borderTopWidth: '2px', borderTopColor: 'white', borderTopStyle: 'solid', marginTop: '5%'}}>
             <h2>Edit {name}'s' walk</h2>
             <form onSubmit={e => handleEditWalksubmit(e)}>          
                 <label>Where did you walk?&nbsp;
@@ -50,7 +49,7 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
                     value={walkLocation}
                     onChange={e => setWalkLocation(e.target.value)}
                     ></input>
-                </label>
+                </label><br></br>
                 <label>Did {name} do their buisness?&nbsp;
                     <select 
                     value={walkBathroom}
@@ -58,21 +57,21 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
                         <option value="1">YES</option>
                         <option value="0">NO</option>
                     </select>
-                </label>
+                </label><br></br>
                 <label>How long was your walk in minutes?&nbsp;
                     <input 
                     type="text"
                     value={walkLengthMinutes}
                     onChange={e => setWalkLengtMinutes(e.target.value)}
                     ></input>
-                </label>
+                </label><br></br>
                 <label>How many miles did you walk?&nbsp;
                     <input 
                     type="text"
                     value={walkMiles}
                     onChange={e => setWalkMiles(e.target.value)}
                     ></input>
-                </label>
+                </label><br></br>
                 <label>Did {name} recieve any medication?&nbsp;
                     <select 
                     type="select"
@@ -82,18 +81,17 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
                         <option value="1">YES</option>
                         <option value="0">NO</option>
                     </select>
-                </label>
+                </label><br></br>
                 <label>Any additional notes?&nbsp;
                     <textarea 
                     type="text"
                     value={walkNotes}
                     onChange={e => setWalkNotes(e.target.value)}
                     ></textarea>
-                </label>
+                </label><br></br>
                 <input type="submit"></input>
             </form>
             <button onClick={() => setClicked(false)}>Hide Edit Form</button>
-        </div>
         </div>
     )
 }

@@ -86,16 +86,20 @@ function DogWalks({dogs, setDogs}) {
     })
 
     return(
-        <div>
+        <div >
             <div className="linkDiv">
                 <Link to={'/dogs'}>Click to return to dogs</Link>
             </div>
             <DogInfo name={name} breed={breed} age={age}/>
-            <div>
-                <h2>{name}'s Walks</h2>
-                <div>{mappingWalks}</div>
+            <h2 style={{color: 'white', fontSize: 'xx-large'}}>{name}'s Walks</h2>
+            <div className="dogWalksDiv">
+                <div className="walksContainer">
+                    <div>{mappingWalks}</div>
+                </div>
+                <div className="wlakFormDiv">
+                    <NewWalkForm name={name} dog_id={dog_id} dogs={dogs} onUpdatingStateWithNewWalk={onUpdatingStateWithNewWalk} /> 
+                </div>
             </div>
-            <NewWalkForm name={name} dog_id={dog_id} dogs={dogs} onUpdatingStateWithNewWalk={onUpdatingStateWithNewWalk} /> 
             {/* hide element unless icon in Walk component clicked */}
         </div>
     )

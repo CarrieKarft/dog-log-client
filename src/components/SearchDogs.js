@@ -5,7 +5,7 @@ function SearchDogs({searchDog, setSearchDog}) {
 
 
     return(
-        <form>
+        <form style={{color: 'white', fontSize: 'x-large'}}>
             <label>Seach for dogs by name&nbsp;    
                 <input 
                 type='text'

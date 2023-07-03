@@ -12,7 +12,7 @@ function Walk({walk, id, handleDeleteClick, name, onUpdatingWalks}) {
     // console.log(clicked)
 
     return(
-        <div>
+        <div className="walk">
             <p>Location: {location}</p>
             <p>Bathroom: {!!used_bathroom ? "Yes" : "No"}</p>
             <p>Duration in minutes: {duration_in_minutes}</p>

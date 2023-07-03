@@ -26,6 +26,12 @@ function NewDogForm({dogs, setDogs}) {
           })
           .then(r => r.json())
           .then(newDog => setDogs([...dogs, newDog]))
+        setDogName("")
+        setDogAge("")
+        setDogBreed("")
+        setDogEnergyLevel("")
+        setDogMedication("")
+
     }
 
     return(

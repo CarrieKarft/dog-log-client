@@ -22,7 +22,7 @@ function DogsList({dogs, setDogs}) {
     return(
         <div>
             <SearchDogs searchDog={searchDog} setSearchDog={setSearchDog} />
-            <div>{mappingDogs}</div>
+            <div className="dogsContainer">{mappingDogs}</div>
             <NewDogForm dogs={dogs} setDogs={setDogs}/>
         </div>
     )

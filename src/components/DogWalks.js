@@ -9,11 +9,11 @@ import {useParams, Link} from 'react-router-dom'
 
 function DogWalks({dogs, setDogs}) {
     // const [clicked, setClicked] = useState(false)
-    const [currentDog, setCurrentDog] = useState({ walks:[] })
+    const [currentDog, setCurrentDog] = useState()
     const {dog_id} = useParams()
 
     useEffect(() => {
-        const findingDog = dogs.find(dog => dog.id === parseInt(dog_id, 10))
+        const findingDog = dogs.find(dog => dog.id == dog_id)
         setCurrentDog(findingDog)
     }, [dogs])
 
@@ -21,18 +21,15 @@ function DogWalks({dogs, setDogs}) {
 
  
     const {name, breed, age, walks} = currentDog
-    // console.log(currentDog.walks)  
-        // console.log("before adding updated walk", currentDog)
+
     function onUpdatingStateWithNewWalk(newWalkData) {
-        // console.log(newWalkData)
+
         const upNewWalks = [...currentDog.walks, newWalkData]
-        currentDog.walks = upNewWalks
-        setCurrentDog(currentDog)
-        // console.log("after adding updated walk", currentDog)
-        const currentDogsFilter = dogs.filter(dog => dog.id !== newWalkData.dog_id)
-        const updatingDogsList = [...currentDogsFilter, currentDog]
+        const updatedCurrentDog = {...currentDog, walks: upNewWalks}
+        setCurrentDog(updatedCurrentDog)
+
+        const updatingDogsList = dogs.map(dog => dog.id === currentDog.id ? updatedCurrentDog : dog)
         setDogs(updatingDogsList)
-        // setDogs([...dogs, ...currentDog])
     }  
 
 
@@ -43,19 +40,15 @@ function DogWalks({dogs, setDogs}) {
         .then(r => r.json())
         .then(() => filteringDeletedWalk(id))
     }
-    // console.log("before updating", currentDog)
+
 
     function filteringDeletedWalk(id) {
         const updatingWalks = walks.filter(walk => walk.id !== id)
-        // console.log(updatingWalks)
-        currentDog.walks = updatingWalks
-        setCurrentDog(currentDog)
-        // console.log("after updating", currentDog)
-        const mappingDogsToUpdate = dogs.map(dog => {
-            if (dog.id === currentDog.id) return currentDog
-            if (dog.id !== currentDog.id) return dog
-        })
-        // console.log("mapping dogs", mappingDogsToUpdate)
+
+        const updatedDog = {...currentDog, walks: updatingWalks}
+        setCurrentDog(updatedDog)
+
+        const mappingDogsToUpdate = dogs.map(dog => currentDog.id === dog.id ? updatedDog : dog)
         setDogs(mappingDogsToUpdate)
     }
 
@@ -68,15 +61,11 @@ function DogWalks({dogs, setDogs}) {
                 return walk
             }
         })
-        currentDog.walks = mappingWalksToEdit
-        setCurrentDog(currentDog)
-        const mappingDogsToUpdate = dogs.map(dog => {
-            if (dog.id === currentDog.id) return currentDog
-            if (dog.id !== currentDog.id) return dog
-        })
+        const updatedDog = {...currentDog, walks: mappingWalksToEdit}
+        setCurrentDog(updatedDog)
+        const mappingDogsToUpdate = dogs.map(dog => dog.id === currentDog.id ? updatedDog : dog)
         setDogs(mappingDogsToUpdate)
         console.log(mappingWalksToEdit)
-        // setClicked(false)
     }
 
    

@@ -4,9 +4,9 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
     const {location, used_bathroom, duration_in_minutes, distance_in_miles, medication_given, notes} = walk 
     const [walkLocation, setWalkLocation] = useState(location)
     const [walkLengthMinutes, setWalkLengtMinutes] = useState(duration_in_minutes)
-    const [walkBathroom, setWalkBathroom] = useState(!!used_bathroom ? "1" : "0")
+    const [walkBathroom, setWalkBathroom] = useState(!!used_bathroom ? "true" : "false")
     const [walkMiles, setWalkMiles] = useState(distance_in_miles)
-    const [walkMedication, setWalkMedication] = useState(!!medication_given ? "1" : "0")
+    const [walkMedication, setWalkMedication] = useState(!!medication_given ? "true" : "false")
     const [walkNotes, setWalkNotes] = useState(notes)
     // console.log(id)
 
@@ -15,10 +15,10 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
         console.log(id)
         const editWalkObj = {
             location: walkLocation,
-            used_bathroom: parseInt(walkBathroom, 10),
+            used_bathroom: JSON.parse(walkBathroom),
             duration_in_minutes: parseInt(walkLengthMinutes, 10),
             distance_in_miles: parseFloat(walkMiles),
-            medication_given: parseInt(walkMedication, 10),
+            medication_given: JSON.parse(walkMedication),
             notes: walkNotes
         }
         console.log(editWalkObj)
@@ -54,8 +54,8 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
                     <select 
                     value={walkBathroom}
                     onChange={e => setWalkBathroom(e.target.value)}>
-                        <option value="1">YES</option>
-                        <option value="0">NO</option>
+                        <option value="true">YES</option>
+                        <option value="false">NO</option>
                     </select>
                 </label><br></br>
                 <label>How long was your walk in minutes?&nbsp;
@@ -78,8 +78,8 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
                     value={walkMedication}
                     onChange={e => setWalkMedication(e.target.value)}
                     >
-                        <option value="1">YES</option>
-                        <option value="0">NO</option>
+                        <option value="true">YES</option>
+                        <option value="false">NO</option>
                     </select>
                 </label><br></br>
                 <label>Any additional notes?&nbsp;

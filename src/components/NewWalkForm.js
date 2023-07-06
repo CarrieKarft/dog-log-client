@@ -3,9 +3,9 @@ import {useState} from 'react'
 function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
     const [walkLocation, setWalkLocation] = useState("")
     const [walkLengthMinutes, setWalkLengtMinutes] = useState("")
-    const [walkBathroom, setWalkBathroom] = useState("1")
+    const [walkBathroom, setWalkBathroom] = useState("true")
     const [walkMiles, setWalkMiles] = useState("")
-    const [walkMedication, setWalkMedication] = useState("1")
+    const [walkMedication, setWalkMedication] = useState("false")
     const [walkNotes, setWalkNotes] = useState("")
 
 
@@ -13,10 +13,10 @@ function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
         e.preventDefault()
         const newWalkObj = {
             location: walkLocation,
-            used_bathroom: parseInt(walkBathroom, 10),
+            used_bathroom: JSON.parse(walkBathroom),
             duration_in_minutes: parseInt(walkLengthMinutes, 10),
             distance_in_miles: parseFloat(walkMiles),
-            medication_given: parseInt(walkMedication, 10),
+            medication_given: JSON.parse(walkMedication),
             notes: walkNotes,
             dog_id: dog_id
         }
@@ -32,8 +32,8 @@ function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
           .then(onUpdatingStateWithNewWalk)
           setWalkLengtMinutes("")
           setWalkLocation("")
-          setWalkBathroom("1")
-          setWalkMedication("1")
+          setWalkBathroom("true")
+          setWalkMedication("false")
           setWalkMiles("")
           setWalkNotes("")
     }
@@ -53,8 +53,8 @@ function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
                 </label><br></br>
                 <label>Did {name} do their buisness?&nbsp;
                     <select type="select" value={walkBathroom} onChange={e => setWalkBathroom(e.target.value)}>
-                        <option defaultValue="1">YES</option>
-                        <option value="0">NO</option>
+                        <option value="true">YES</option>
+                        <option value="false">NO</option>
                     </select>
                 </label><br></br>
                 <label>How long was your walk in minutes?&nbsp;
@@ -73,8 +73,8 @@ function NewWalkForm({name, onUpdatingStateWithNewWalk, dog_id}) {
                 </label><br></br>
                 <label>Did {name} recieve any medication?&nbsp;
                     <select type="select" value={walkMedication} onChange={e => setWalkMedication(e.target.value)}>
-                        <option defaultValue="1" >YES</option>
-                        <option value="0">NO</option>
+                        <option value="true" >YES</option>
+                        <option value="false">NO</option>
                     </select>
                 </label><br></br>
                 <label>Any additional notes?&nbsp;

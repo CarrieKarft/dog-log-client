@@ -24,16 +24,9 @@ function NewDogForm({dogs, setDogs}) {
             },
             body: JSON.stringify(newDogObj),
           })
-          .then(r => {
-            if (r.ok) {
-                r.json()
-                .then(newDog => setDogs([...dogs, {newDog, walks: []}]))
-            } else {
-                r.json().then(err => console.log(err))
-            }
-            // r.json()
-        })
-        //   .then(newDog => setDogs([...dogs, {newDog, walks: []}]))
+          .then(r => r.json())
+          .then(newDog => setDogs([...dogs, newDog]))
+
         setDogName("")
         setDogAge("")
         setDogBreed("")
@@ -41,6 +34,7 @@ function NewDogForm({dogs, setDogs}) {
         setDogMedication("")
 
     }
+  
 
     return(
         <div className='newDogDiv'>

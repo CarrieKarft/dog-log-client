@@ -1,8 +1,6 @@
-// import {useState} from 'react'
+
 
 function SearchDogs({searchDog, setSearchDog}) {
-    // const [searchName, setSearchName] = useState("")
-
 
     return(
         <form style={{color: 'white', fontSize: 'x-large'}}>

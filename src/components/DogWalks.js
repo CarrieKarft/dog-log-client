@@ -1,5 +1,4 @@
 import DogInfo from "./DogInfo";
-import EditWalk from "./EditWalk";
 import NewWalkForm from "./NewWalkForm";
 import Walk from "./Walk";
 import {useState, useEffect} from 'react'
@@ -8,8 +7,7 @@ import {useParams, Link} from 'react-router-dom'
 
 
 function DogWalks({dogs, setDogs}) {
-    // const [clicked, setClicked] = useState(false)
-    const [currentDog, setCurrentDog] = useState()
+    const [currentDog, setCurrentDog] = useState({walks: []})
     const {dog_id} = useParams()
 
     useEffect(() => {
@@ -63,6 +61,7 @@ function DogWalks({dogs, setDogs}) {
         })
         const updatedDog = {...currentDog, walks: mappingWalksToEdit}
         setCurrentDog(updatedDog)
+        
         const mappingDogsToUpdate = dogs.map(dog => dog.id === currentDog.id ? updatedDog : dog)
         setDogs(mappingDogsToUpdate)
         console.log(mappingWalksToEdit)
@@ -89,7 +88,6 @@ function DogWalks({dogs, setDogs}) {
                     <NewWalkForm name={name} dog_id={dog_id} dogs={dogs} onUpdatingStateWithNewWalk={onUpdatingStateWithNewWalk} /> 
                 </div>
             </div>
-            {/* hide element unless icon in Walk component clicked */}
         </div>
     )
 }

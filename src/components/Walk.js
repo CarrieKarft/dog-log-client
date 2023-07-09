@@ -7,9 +7,8 @@ function Walk({walk, id, handleDeleteClick, name, onUpdatingWalks}) {
 
     function hadleEditClick() {
         setClicked(true)
-        // console.log(clicked)
     }
-    // console.log(clicked)
+
 
     return(
         <div className="walk">
@@ -31,14 +30,6 @@ function Walk({walk, id, handleDeleteClick, name, onUpdatingWalks}) {
         </div>
     )
 }
-
-//   t.string "location"
-// t.boolean "used_bathroom"
-// t.integer "duration_in_minutes"
-// t.float "distance_in_miles"
-// t.boolean "medication_given"
-// t.string "notes"
-// t.integer "dog_id"
 
 
 export default Walk;

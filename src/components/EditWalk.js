@@ -8,7 +8,6 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
     const [walkMiles, setWalkMiles] = useState(distance_in_miles)
     const [walkMedication, setWalkMedication] = useState(!!medication_given ? "true" : "false")
     const [walkNotes, setWalkNotes] = useState(notes)
-    // console.log(id)
 
     function handleEditWalksubmit(e) {
         e.preventDefault()
@@ -34,10 +33,6 @@ function EditWalk({name, id , setClicked, walk, onUpdatingWalks}) {
         setClicked(false)
     }
 
-
-    // function handleUpdatingWalks(updatedWalk) {
-
-    // }
 
     return(
         <div style={{borderTopWidth: '2px', borderTopColor: 'white', borderTopStyle: 'solid', marginTop: '5%'}}>

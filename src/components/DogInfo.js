@@ -1,7 +1,6 @@
 
 
 function DogInfo({name, breed, age}) {
-    // console.log(dogWalks)
     return(
         <div style={{color: 'white', fontSize: 'larger', borderStyle: 'solid', borderColor: 'white', borderWidth: '2px', borderRadius: '25px', margin: '5%'}}>
             <h2 >Dog Info</h2>

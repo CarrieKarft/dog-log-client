@@ -2,7 +2,6 @@ import {Link} from 'react-router-dom';
 
 
 function Dog({dog, id}) {
-//   console.log(dog.medication)
 
     return(
         <div className="dogDiv">

@@ -1,7 +1,7 @@
 import SearchDogs from "./SearchDogs";
 import Dog from "./Dog";
 import NewDogForm from "./NewDogForm";
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 
 
 function DogsList({dogs, setDogs}) {

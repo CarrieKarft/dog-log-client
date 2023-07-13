@@ -4,7 +4,7 @@ function NewDogForm({dogs, setDogs}) {
     const [dogName, setDogName] = useState("")
     const [dogAge, setDogAge] = useState("")
     const [dogBreed, setDogBreed] = useState("")
-    const [dogEnergyLevel, setDogEnergyLevel] = useState("")
+    const [dogEnergyLevel, setDogEnergyLevel] = useState("low")
     const [dogMedication, setDogMedication] = useState("")
 
     function handleSubmit(e) {
@@ -30,7 +30,7 @@ function NewDogForm({dogs, setDogs}) {
         setDogName("")
         setDogAge("")
         setDogBreed("")
-        setDogEnergyLevel("")
+        setDogEnergyLevel("low")
         setDogMedication("")
 
     }

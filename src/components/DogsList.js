@@ -5,7 +5,6 @@ import {useState} from 'react'
 
 
 function DogsList({dogs, setDogs}) {
-
     const [searchDog, setSearchDog] = useState("")
 
         console.log(searchDog)
